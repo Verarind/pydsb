@@ -5,9 +5,10 @@ with open("README.md") as f:
 
 setup(
     name="pydsb",
-    version="1.0.1",
+    version="1.2.0",
     description="Unofficial DSBmobile API written in Python",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     license="MIT",
     author="Lucas Hild",
     author_email="contact@lucas-hild.de",
