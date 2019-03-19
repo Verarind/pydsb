@@ -44,7 +44,7 @@ class PyDSB:
         return [
             {
                 "headline": news["headline"],
-                "date": self._get_as_datetime(news["newsdate"], with_second=True),
+                "date": self._get_as_datetime(news["newsdate"]),
                 "id": news["newsid"],
                 "image_url": news["newsimageurl"],
                 "short_message": news["shortmessage"],
@@ -54,12 +54,12 @@ class PyDSB:
             if news["newsid"] != self.ZERO_VALUE
         ]
 
-    def _get_as_datetime(self, date_string, with_second=False):
+    def _get_as_datetime(self, date_string):
         date_format = "%d.%m.%Y %H:%M"
-        if with_second:
-            date_format += ":%S"
-
-        return datetime.strptime(date_string, date_format)
+        try:
+            return datetime.strptime(date_string + ":%S", date_format)
+        except:
+            return datetime.strptime(date_string, date_format)
 
 
 class LoginError(Exception):
